@@ -23,7 +23,7 @@ import gear
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
 _curdir = os.path.join(os.getcwd(), os.path.dirname(__file__))
-# 設定在雲端與近端的資料儲存目錄
+#1 設定在雲端與近端的資料儲存目錄
 if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
     # 表示程式在雲端執行
     download_root_dir = os.environ['OPENSHIFT_DATA_DIR']
