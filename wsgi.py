@@ -86,7 +86,12 @@ class Hello(object):
     @cherrypy.expose
     def index(self):
         outstring = "學號:40223151"
-        outstring += self.menuLink()
+        outstring += "<br />"
+        outstring += "姓名:簡正斌"
+        outstring += "<br />"
+        outstring += "班級:四設二甲"
+        outstring += "<br />"
+        outstring  += self.menuLink()
 
         return outstring
     index.exposed = True
