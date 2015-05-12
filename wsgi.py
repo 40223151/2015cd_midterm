@@ -85,6 +85,20 @@ class Hello(object):
     #@+node:2014fall.20141215194146.1791: *3* index
     @cherrypy.expose
     def index(self):
+        outstring='''
+    <html>
+    <font size='6' color='darkslateblue' face='標楷體' >
+    協同產品設計分組報告
+    <br />
+    第八組
+    <br />
+    </font>
+    </html>'''
+        outstring  += self.menuLink()
+        return outstring
+    index.exposed = True
+
+    def index1(self):
         outstring = "學號:40223151"
         outstring += "<br />"
         outstring += "姓名:簡正斌"
