@@ -90,7 +90,7 @@ class Hello(object):
     <font size='6' color='darkslateblue' face='標楷體' >
     協同產品設計分組報告
     <br />
-    第八組
+    第八組 40223151網站
     <br />
     <table border=3>
 　 <tr>
@@ -102,7 +102,7 @@ class Hello(object):
 　　 <th><font size="4">40223110王常浩 </font></th>
 　 </tr>
 　 <tr>
-　　 <th><font size="4">40223124袁丞宗 </font></th>
+　　 <th><font size="4"><a href="http://cd0427-40223124.rhcloud.com/">40223124袁丞宗 </a></font></th>
 　　 <th><font size="4">40223129許家瑋 </font></th>
     </tr>
 　 <tr>
@@ -130,10 +130,10 @@ class Hello(object):
         outstring += "<br />"
         outstring += "班級:四設二甲"
         outstring += "<br />"
-        outstring  += self.menuLink()
+        outstring += self.menuLink()
 
         return outstring
-    index.exposed = True
+    index1.exposed = True
     def drawspur1(self, K=None, N=None, inp2=None):
 
         # 將標準答案存入 answer session 對應區
@@ -159,14 +159,15 @@ class Hello(object):
         </select>
         模數:<br />
         <input type=\"text\" name=\"K\"><br />
-        壓力角(>33時會有錯誤):<br />
+        壓力角:<br />
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">
         <a href="gear">3D齒輪模式</a>
-        <a href="drawspur">drawspur</a>
-        <a href="spur">spur</a>
+        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
+        <a href="spur">七顆齒輪</a>
         <a href="index">index</a>
+        <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
     </form>
     </html>
     '''
@@ -206,14 +207,15 @@ class Hello(object):
         </select>
         模數:<br />
         <input type=\"text\" name=\"K\"><br />
-        壓力角(>33時會有錯誤):<br />
+        壓力角:<br />
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">
         <a href="gear">3D齒輪模式</a>
-        <a href="drawspur">drawspur</a>
-        <a href="spur">spur</a>
+        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
+        <a href="spur">七顆齒輪</a>
         <a href="index">index</a>
+        <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
 
     </form>
     <hr>
@@ -469,7 +471,7 @@ gear(400,400,300,41,"blue")
         </datalist><br /><br />
         模數:<br />
         <input type=\"text\" name=\"K\"><br />
-        壓力角(>33時會有錯誤):<br />
+        壓力角:<br />
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">'''+self.menuLink()+'''
@@ -477,10 +479,6 @@ gear(400,400,300,41,"blue")
 </body>
 </html>
     '''
-        outstring +='''3D齒輪模式操作圖示<img src="https://copy.com/LEfCvgTRr6ptU2Jv"><br />
-    <img src="https://copy.com/ZpzLF8IqeJRN0D3O"><br />
-    <img src="https://copy.com/thumbs/cda/3Dgear3.png?size=1024&revision=80"><br /> '''
-
         return outstring
     spur.exposed = True
 
@@ -955,10 +953,10 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         return '''
         <br />
         <a href=\"index\">input</a>|
-        <a href=\"spur\">spur</a>|
-        <a href="drawspur">drawspur</a>|
+        <a href=\"spur\">七顆齒輪</a>|
+        <a href="drawspur">2015cda 期中上機考 一顆齒輪繪圖</a>|
         <a href="index">index</a>|
-        <a href="drawspur1"> 2015cda 期中上機考</a>|
+        <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>|
         <br />
         '''
 #@-others
