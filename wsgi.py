@@ -98,15 +98,15 @@ class Hello(object):
 　　 <th><font size="4"></font></th>
     </tr>
 　 <tr rowspan="2">
-　　 <th><font size="4"><a href="http://m3.dfps.tp.edu.tw/~kousen/">40223151簡正斌</a> </font></th>
-　　 <th><font size="4">40223110王常浩 </font></th>
+　　 <th><font size='4' color='yellow' ><a href="http://cd0427-40223151.rhcloud.com/">40223151簡正斌</a> </font></th>
+　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/">40223110王常浩</a></font></th>
 　 </tr>
 　 <tr>
 　　 <th><font size="4"><a href="http://cd0427-40223124.rhcloud.com/">40223124袁丞宗 </a></font></th>
-　　 <th><font size="4">40223129許家瑋 </font></th>
+　　 <th><font size="4"><a href="http://cd0427-40223129.rhcloud.com/">40223129許家瑋 </a></font></th>
     </tr>
 　 <tr>
-　　 <th><font size="4">40223149賴涵餘 </font></th>
+　　 <th><font size='4' color='yellow' ><a href="http://2015springcda-40223149.rhcloud.com/">40223149賴涵餘</a></font></th>
 　　 <th><font size="4">40223150謝俊宇 </font></th>
     </tr>
 　 <tr>
@@ -124,14 +124,22 @@ class Hello(object):
     index.exposed = True
 
     def index1(self):
-        outstring = "學號:40223151"
+        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >個人影片</font>'''
+        outstring += "</br>"
+        outstring += "學號:40223151"
         outstring += "<br />"
         outstring += "姓名:簡正斌"
         outstring += "<br />"
         outstring += "班級:四設二甲"
         outstring += "<br />"
+        outstring += """
+                    <iframe src="https://player.vimeo.com/video/128123220" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </br>
+                    影片網址:
+                    <a href="https://vimeo.com/128123220">2015cda w11</a> </br>
+                    個人vimeo網站:
+                    <a href="https://vimeo.com/user27353237">40223151@gm.nfu.edu.tw</a>
+                    </br></br>"""
         outstring += self.menuLink()
-
         return outstring
     index1.exposed = True
     def drawspur1(self, K=None, N=None, inp2=None):
@@ -168,6 +176,7 @@ class Hello(object):
         <a href="spur">七顆齒輪</a>
         <a href="index">index</a>
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
+        <a href="index1"> 個人影片</a>
     </form>
     </html>
     '''
@@ -216,6 +225,7 @@ class Hello(object):
         <a href="spur">七顆齒輪</a>
         <a href="index">index</a>
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
+        <a href="index1"> 個人影片</a>
 
     </form>
     <hr>
@@ -957,7 +967,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         <a href="drawspur">2015cda 期中上機考 一顆齒輪繪圖</a>|
         <a href="index">index</a>|
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>|
-        <br />
+        <a href="index1"> 個人影片</a>|<br />
         '''
 #@-others
 ################# (4) 程式啟動區
