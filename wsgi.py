@@ -97,6 +97,10 @@ class Hello(object):
 　　 <th><font size="4">小組名單</font></th>
 　　 <th><font size="4"></font></th>
     </tr>
+　 <tr>
+　　 <th><font size="4"><a href="http://cd0427-40223151.rhcloud.com/">小組openshift</a></font></th>
+　　 <th><font size="4"><a href="https://github.com/mm112287/2015cda_g8">小組github</a></font></th>
+    </tr>
 　 <tr rowspan="2">
 　　 <th><font size='4' color='yellow' ><a href="http://cd0427-40223151.rhcloud.com/">40223151簡正斌</a> </font></th>
 　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/">40223110王常浩</a></font></th>
@@ -962,7 +966,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
     def menuLink(self):
         return '''
         <br />
-        <a href=\"index\">input</a>|
+        <a href=\"index\">首頁</a>|
         <a href=\"spur\">七顆齒輪</a>|
         <a href="drawspur">2015cda 期中上機考 一顆齒輪繪圖</a>|
         <a href="index">index</a>|
