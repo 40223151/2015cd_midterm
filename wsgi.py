@@ -98,7 +98,7 @@ class Hello(object):
 　　 <th><font size="4"></font></th>
     </tr>
 　 <tr>
-　　 <th><font size="4"><a href="http://cd0427-40223151.rhcloud.com/">小組openshift</a></font></th>
+　　 <th><font size="4"><a href="http://2015cdag8-40223124.rhcloud.com/">小組openshift</a></font></th>
 　　 <th><font size="4"><a href="https://github.com/mm112287/2015cda_g8">小組github</a></font></th>
     </tr>
 　 <tr rowspan="2">
