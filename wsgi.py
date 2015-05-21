@@ -98,19 +98,19 @@ class Hello(object):
 　　 <th><font size="4"></font></th>
     </tr>
 　 <tr>
-　　 <th><font size="4"><a href="http://2015cdag8-40223124.rhcloud.com/">小組openshift</a></font></th>
-　　 <th><font size="4"><a href="https://github.com/mm112287/2015cda_g8">小組github</a></font></th>
+　　 <th><font size="4"><a href="http://2015cdag8-40223124.rhcloud.com/" target="_blank">小組openshift</a></font></th>
+　　 <th><font size="4"><a href="https://github.com/mm112287/2015cda_g8" target="_blank">小組github</a></font></th>
     </tr>
 　 <tr rowspan="2">
-　　 <th><font size='4' color='yellow' ><a href="http://cd0427-40223151.rhcloud.com/">40223151簡正斌</a> </font></th>
-　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/">40223110王常浩</a></font></th>
+　　 <th><font size='4' color='yellow' ><a href="http://cd0427-40223151.rhcloud.com/" target="_blank">40223151簡正斌</a> </font></th>
+　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/" target="_blank">40223110王常浩</a></font></th>
 　 </tr>
 　 <tr>
-　　 <th><font size="4"><a href="http://cd0427-40223124.rhcloud.com/">40223124袁丞宗 </a></font></th>
-　　 <th><font size="4"><a href="http://cd0427-40223129.rhcloud.com/">40223129許家瑋 </a></font></th>
+　　 <th><font size="4"><a href="http://cd0427-40223124.rhcloud.com/" target="_blank">40223124袁丞宗 </a></font></th>
+　　 <th><font size="4"><a href="http://cd0427-40223129.rhcloud.com/" target="_blank">40223129許家瑋 </a></font></th>
     </tr>
 　 <tr>
-　　 <th><font size='4' color='yellow' ><a href="http://2015springcda-40223149.rhcloud.com/">40223149賴涵餘</a></font></th>
+　　 <th><font size='4' color='yellow' ><a href="http://2015springcda-40223149.rhcloud.com/" target="_blank">40223149賴涵餘</a></font></th>
 　　 <th><font size="4">40223150謝俊宇 </font></th>
     </tr>
 　 <tr>
@@ -137,12 +137,13 @@ class Hello(object):
         outstring += "班級:四設二甲"
         outstring += "<br />"
         outstring += """
+                    <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
                     <iframe src="https://player.vimeo.com/video/128123220" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </br>
                     影片網址:
                     <a href="https://vimeo.com/128123220">2015cda w11</a> </br>
                     個人vimeo網站:
                     <a href="https://vimeo.com/user27353237">40223151@gm.nfu.edu.tw</a>
-                    </br></br>"""
+                    </br></br></body>"""
         outstring += self.menuLink()
         return outstring
     index1.exposed = True
@@ -175,10 +176,10 @@ class Hello(object):
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">
+        <a href="index">首頁</a>
         <a href="gear">3D齒輪模式</a>
-        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
         <a href="spur">七顆齒輪</a>
-        <a href="index">index</a>
+        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
         <a href="index1"> 個人影片</a>
     </form>
@@ -224,10 +225,10 @@ class Hello(object):
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">
+        <a href="index">首頁</a>
         <a href="gear">3D齒輪模式</a>
-        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
         <a href="spur">七顆齒輪</a>
-        <a href="index">index</a>
+        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
         <a href="index1"> 個人影片</a>
 
@@ -487,7 +488,7 @@ gear(400,400,300,41,"blue")
         <input type=\"text\" name=\"K\"><br />
         壓力角:<br />
         <input type=\"text\" name=\"inp2\"><br />
-        <input type=\"submit\" value=\"確定\">
+        <input type=\"submit\" value=\"確定\" onClick="LinkUp()">
         <input type=\"reset\" value=\"重填\">'''+self.menuLink()+'''
     </form>
 </body>
@@ -967,9 +968,9 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         return '''
         <br />
         <a href=\"index\">首頁</a>|
+        <a href="gear">3D齒輪模式</a>|
         <a href=\"spur\">七顆齒輪</a>|
         <a href="drawspur">2015cda 期中上機考 一顆齒輪繪圖</a>|
-        <a href="index">index</a>|
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>|
         <a href="index1"> 個人影片</a>|<br />
         '''
