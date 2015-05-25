@@ -141,20 +141,21 @@ class Hello(object):
         outstring += "</br>"
         outstring += "</br>"
         outstring += "</br>"
-        outstring += "學號:40223151"
+        outstring +='''<font size='3'>學號:40223151</font>'''
         outstring += "<br />"
-        outstring += "姓名:簡正斌"
+        outstring +='''<font size='3'>姓名:簡正斌</font>'''
         outstring += "<br />"
-        outstring += "班級:四設二甲"
+        outstring += '''<font size='3'>班級:四設二甲</font>'''
         outstring += "<br />"
         outstring += """
                     <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
+                    <font size='3'>
                     <iframe src="https://player.vimeo.com/video/128123220" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </br>
                     影片網址:
-                    <a href="https://vimeo.com/128123220">2015cda w11</a> </br>
+                    <font size='4'><a href="https://vimeo.com/128123220">2015cda w11</a></font></br>
                     個人vimeo網站:
-                    <a href="https://vimeo.com/user27353237">40223151@gm.nfu.edu.tw</a>
-                    </br></br></body>"""
+                    <font size='4'><a href="https://vimeo.com/user27353237">40223151@gm.nfu.edu.tw</font></a>
+                    </br></br></body></font>"""
         outstring += self.menuLink()
         return outstring
     index1.exposed = True
@@ -178,6 +179,7 @@ class Hello(object):
     <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     </head>
+    <font size='3'>
     <form method=\"post\" action=\"spuraction\">
         <fieldset>
         <legend>2015cda 期中上機考:</legend>
@@ -198,6 +200,7 @@ class Hello(object):
         <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
         <a href="index1"> 個人影片</a>
+    </font>
     </form>
     </html>
     '''
@@ -232,6 +235,7 @@ class Hello(object):
     </head>
     <!-- 啟動 brython() -->
     <body onload="brython()">
+    <font size='3'>
     <form method=\"post\" action=\"drawspuraction\">
         <fieldset>
         <legend>2015cda 期中上機考:</legend>
@@ -252,8 +256,8 @@ class Hello(object):
         <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
         <a href="index1"> 個人影片</a>
-
     </form>
+    </font>
     <hr>
     <!-- 以下在網頁內嵌 Brython 程式 -->
     <script type="text/python">
@@ -426,7 +430,8 @@ gear(400,400,300,41,"blue")
     <script src="/static/gearUtils-04.js" type="text/javascript"></script>
     </head>
     <!-- 啟動 brython() -->
-    <body onload="brython()">        
+    <body onload="brython()">  
+    <font size='3'>      
     <form method=\"post\" action=\"mygeartest2\">
         <fieldset>
         <legend>考試協同七個齒輪齒輪參數表單值:</legend>
@@ -517,6 +522,7 @@ gear(400,400,300,41,"blue")
         <input type=\"submit\" value=\"確定\" onClick="LinkUp()">
         <input type=\"reset\" value=\"重填\">'''+self.menuLink()+'''
     </form>
+   </font>
 </body>
 </html>
     '''
