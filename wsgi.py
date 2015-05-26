@@ -132,8 +132,9 @@ class Hello(object):
         outstring  += self.menuLink()
         return outstring
     index.exposed = True
-    def Reviews(self):
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >心得</font>'''
+
+    def mas(self):
+        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >樂高人偶</font>'''
         outstring += "</br>"
         outstring += self.menuLink1()
         outstring += "</br>"
@@ -141,6 +142,23 @@ class Hello(object):
         outstring += "</br>"
         outstring += "</br>"
         outstring +="""
+                            <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
+                            </body>
+                            """
+        outstring += self.menuLink()
+        return outstring
+    mas.exposed = True
+
+    def Reviews(self):
+        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >樂高人偶</font>'''
+        outstring += "</br>"
+        outstring += self.menuLink1()
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring +="""
+                        <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
                         <font size='3'>
                         <DT>心得:
                                 <DD>我覺得這週一方面在了解期中考所做得程式跟七齒嚙合另一方面是讓我們可以跟小組同</br>
@@ -150,7 +168,7 @@ class Hello(object):
 
 
                         </fon>
-
+                        </body>
                             """
         outstring += self.menuLink()
         return outstring
@@ -1154,7 +1172,13 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
                             </li>
                         </ul>
                     </li>
-                    <li><a href="i#">2015cda-w12</a><br /></li>
+                    <li>
+                        <a href="#">2015cda-w12</a>
+                        <ul>
+                            <li><a href="mas">樂高人偶</a></li>
+                            <li><a href="#">心得</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">2015cda-w13</a><br /></li>
                     <li><a href="#">2015cda-w14</a><br /></li>
                     <li><a href="index1"> 個人影片</a><br /></li>
