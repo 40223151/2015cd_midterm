@@ -19,6 +19,8 @@ import os
 import random
 # 導入 gear 模組
 import gear
+import man
+
 
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
@@ -1175,7 +1177,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
                     <li>
                         <a href="#">2015cda-w12</a>
                         <ul>
-                            <li><a href="mas">樂高人偶</a></li>
+                            <li><a href="man">樂高人偶</a></li>
                             <li><a href="#">心得</a></li>
                         </ul>
                     </li>
@@ -1210,6 +1212,7 @@ application_conf = {'/static':{
     }
 root = Hello()
 root.gear = gear.Gear()
+root.man = man.MAN()
 cherrypy.server.socket_port = 8081
 cherrypy.server.socket_host = '127.0.0.1'
 if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
