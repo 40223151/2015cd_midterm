@@ -132,7 +132,30 @@ class Hello(object):
         outstring  += self.menuLink()
         return outstring
     index.exposed = True
+    def Reviews(self):
+        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >心得</font>'''
+        outstring += "</br>"
+        outstring += self.menuLink1()
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring +="""
+                        <font size='3'>
+                        <DT>心得:
+                                <DD>我覺得這週一方面在了解期中考所做得程式跟七齒嚙合另一方面是讓我們可以跟小組同</br>
+                                <DD>步分工，用最短的時間內更有效率的做事，在這個環境中了解到分工是多麼的重要也對程</br>
+                                <DD>式更加了解。
 
+
+
+                        </fon>
+
+                            """
+        outstring += self.menuLink()
+        return outstring
+    Reviews.exposed = True
+    
     def index1(self):
         outstring ='''<font size='6' color='darkslateblue' face='標楷體' >個人影片</font>'''
         outstring += "</br>"
@@ -1127,7 +1150,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
                         <ul>
                             <li><a href="spur">七顆齒輪</a></li>
                             <li>
-                                <a href="#">心得</a>
+                                <a href="Reviews">心得</a>
                             </li>
                         </ul>
                     </li>
