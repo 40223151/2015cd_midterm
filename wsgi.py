@@ -1012,7 +1012,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         <html>
             <head>
                 <meta charset="UTF-8" />
-                <title>純 CSS 選單 Example</title>
+                <title>40223151_2015cda報告</title>
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
                 <script type="text/javascript">
                     $(function(){
