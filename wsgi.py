@@ -907,6 +907,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
     
         '''
     @cherrypy.expose
+    #副程式
     def  menuLink2(self):
         return self.menuLink1.index()
 
