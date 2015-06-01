@@ -44,7 +44,7 @@ class MenuLink1(object):
                     ul.navigation li a{
                         display: block;
                         padding: 12px 20px;
-                        background: #888;
+                        background: #220088;
                         color: #FFF;
                     }
                     /* 特定在第一層，以左邊灰線分隔 */
@@ -80,8 +80,8 @@ class MenuLink1(object):
                     ul.navigation ul a {
                         width: 120px;
                         padding: 10px 12px;	
-                        color: #666;		
-                        background: #EEE;			
+                        color: #FFF;		
+                        background: #0066FF;			
                     }
                     ul.navigation ul a:hover {		
                         background: #CCC;				
