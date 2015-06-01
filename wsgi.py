@@ -220,6 +220,7 @@ class Hello(object):
         outstring += '''
     <!DOCTYPE html> 
     <html>
+    <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
     <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     </head>
@@ -246,6 +247,7 @@ class Hello(object):
         <a href="index1"> 個人影片</a>
     </font>
     </form>
+    </body>
     </html>
     '''
 
@@ -270,6 +272,7 @@ class Hello(object):
         outstring += '''
     <!DOCTYPE html> 
     <html>
+    <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
     <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     </head>
@@ -296,6 +299,7 @@ class Hello(object):
         <a href="index1"> 個人影片</a>
     </font>
     </form>
+    </body>
     </html>
     '''
 
@@ -331,7 +335,7 @@ class Hello(object):
     <script src="/static/gearUtils-04.js" type="text/javascript"></script>
     </head>
     <!-- 啟動 brython() -->
-    <body onload="brython()">        
+    <body onload="brython()" bgcolor='azure' link='darkorenge' vlink='darkorenge '>        
     <form method=\"post\" action=\"mygeartest2\">
         <fieldset>
         <legend>考試協同七個齒輪齒輪參數表單值:</legend>
