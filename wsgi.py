@@ -19,6 +19,8 @@ import os
 import random
 # 導入 gear 模組
 import gear
+import man
+
 
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
@@ -133,6 +135,47 @@ class Hello(object):
         return outstring
     index.exposed = True
 
+    def mas(self):
+        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >樂高人偶</font>'''
+        outstring += "</br>"
+        outstring += self.menuLink1()
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring +="""
+                            <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
+                            </body>
+                            """
+        outstring += self.menuLink()
+        return outstring
+    mas.exposed = True
+
+    def Reviews(self):
+        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >樂高人偶</font>'''
+        outstring += "</br>"
+        outstring += self.menuLink1()
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring += "</br>"
+        outstring +="""
+                        <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
+                        <font size='3'>
+                        <DT>心得:
+                                <DD>我覺得這週一方面在了解期中考所做得程式跟七齒嚙合另一方面是讓我們可以跟小組同</br>
+                                <DD>步分工，用最短的時間內更有效率的做事，在這個環境中了解到分工是多麼的重要也對程</br>
+                                <DD>式更加了解。
+
+
+
+                        </fon>
+                        </body>
+                            """
+        outstring += self.menuLink()
+        return outstring
+    Reviews.exposed = True
+    
     def index1(self):
         outstring ='''<font size='6' color='darkslateblue' face='標楷體' >個人影片</font>'''
         outstring += "</br>"
@@ -211,7 +254,7 @@ class Hello(object):
  
     def drawspur(self, K=None, N=None, inp2=None):
 
-        # 將標準答案存入 answer session 對應區
+          # 將標準答案存入 answer session 對應區
         theanswer = random.randint(1, 100)
         thecount = 0
         # 將答案與計算次數變數存進 session 對應變數
@@ -228,13 +271,7 @@ class Hello(object):
     <html>
     <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.0-20150301-090019/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
     </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
     <font size='3'>
     <form method=\"post\" action=\"drawspuraction\">
         <fieldset>
@@ -256,150 +293,13 @@ class Hello(object):
         <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
         <a href="index1"> 個人影片</a>
-    </form>
     </font>
-    <hr>
-    <!-- 以下在網頁內嵌 Brython 程式 -->
-    <script type="text/python">
-    from browser import document, alert
-
-    def echo(ev):
-        alert(document["zone"].value)
-
-    # 將文件中名稱為 mybutton 的物件, 透過 click 事件與 echo 函式 bind 在一起
-    document['mybutton'].bind('click',echo)
-    </script>
-
-    <!-- 以下為 canvas 畫圖程式 -->
-<script type="text/python">
-# 從 browser 導入 document
-from browser import document
-from math import *
-
-# 準備在 id="plotarea" 的 canvas 中繪圖
-canvas = document["plotarea"]
-ctx = canvas.getContext("2d")
-
-def create_line(x1, y1, x2, y2, width=3, fill="red"):
-    ctx.beginPath()
-    ctx.lineWidth = width
-    ctx.moveTo(x1, y1)
-    ctx.lineTo(x2, y2)
-    ctx.strokeStyle = fill
-    ctx.stroke()
-
-# 導入數學函式後, 圓周率為 pi
-# deg 為角度轉為徑度的轉換因子
-deg = pi/180.
-#
-# 以下分別為正齒輪繪圖與主 tkinter 畫布繪圖
-#
-# 定義一個繪正齒輪的繪圖函式
-# midx 為齒輪圓心 x 座標
-# midy 為齒輪圓心 y 座標
-# rp 為節圓半徑, n 為齒數
-def gear(midx, midy, rp, n, 顏色):
-    # 將角度轉換因子設為全域變數
-    global deg
-    # 齒輪漸開線分成 15 線段繪製
-    imax = 15
-    # 在輸入的畫布上繪製直線, 由圓心到節圓 y 軸頂點畫一直線
-    create_line(midx, midy, midx, midy-rp)
-    # 畫出 rp 圓, 畫圓函式尚未定義
-    #create_oval(midx-rp, midy-rp, midx+rp, midy+rp, width=2)
-    # a 為模數 (代表公制中齒的大小), 模數為節圓直徑(稱為節徑)除以齒數
-    # 模數也就是齒冠大小
-    a=2*rp/n
-    # d 為齒根大小, 為模數的 1.157 或 1.25倍, 這裡採 1.25 倍
-    d=2.5*rp/n
-    # ra 為齒輪的外圍半徑
-    ra=rp+a
-    print("ra:", ra)
-    # 畫出 ra 圓, 畫圓函式尚未定義
-    #create_oval(midx-ra, midy-ra, midx+ra, midy+ra, width=1)
-    # rb 則為齒輪的基圓半徑
-    # 基圓為漸開線長齒之基準圓
-    rb=rp*cos(20*deg)
-    print("rp:", rp)
-    print("rb:", rb)
-    # 畫出 rb 圓 (基圓), 畫圓函式尚未定義
-    #create_oval(midx-rb, midy-rb, midx+rb, midy+rb, width=1)
-    # rd 為齒根圓半徑
-    rd=rp-d
-    # 當 rd 大於 rb 時
-    print("rd:", rd)
-    # 畫出 rd 圓 (齒根圓), 畫圓函式尚未定義
-    #create_oval(midx-rd, midy-rd, midx+rd, midy+rd, width=1)
-    # dr 則為基圓到齒頂圓半徑分成 imax 段後的每段半徑增量大小
-    # 將圓弧分成 imax 段來繪製漸開線
-    dr=(ra-rb)/imax
-    # tan(20*deg)-20*deg 為漸開線函數
-    sigma=pi/(2*n)+tan(20*deg)-20*deg
-    for j in range(n):
-        ang=-2.*j*pi/n+sigma
-        ang2=2.*j*pi/n+sigma
-        lxd=midx+rd*sin(ang2-2.*pi/n)
-        lyd=midy-rd*cos(ang2-2.*pi/n)
-        #for(i=0;i<=imax;i++):
-        for i in range(imax+1):
-            r=rb+i*dr
-            theta=sqrt((r*r)/(rb*rb)-1.)
-            alpha=theta-atan(theta)
-            xpt=r*sin(alpha-ang)
-            ypt=r*cos(alpha-ang)
-            xd=rd*sin(-ang)
-            yd=rd*cos(-ang)
-            # i=0 時, 繪線起點由齒根圓上的點, 作為起點
-            if(i==0):
-                last_x = midx+xd
-                last_y = midy-yd
-            # 由左側齒根圓作為起點, 除第一點 (xd,yd) 齒根圓上的起點外, 其餘的 (xpt,ypt)則為漸開線上的分段點
-            create_line((midx+xpt),(midy-ypt),(last_x),(last_y),fill=顏色)
-            # 最後一點, 則為齒頂圓
-            if(i==imax):
-                lfx=midx+xpt
-                lfy=midy-ypt
-            last_x = midx+xpt
-            last_y = midy-ypt
-        # the line from last end of dedendum point to the recent
-        # end of dedendum point
-        # lxd 為齒根圓上的左側 x 座標, lyd 則為 y 座標
-        # 下列為齒根圓上用來近似圓弧的直線
-        create_line((lxd),(lyd),(midx+xd),(midy-yd),fill=顏色)
-        #for(i=0;i<=imax;i++):
-        for i in range(imax+1):
-            r=rb+i*dr
-            theta=sqrt((r*r)/(rb*rb)-1.)
-            alpha=theta-atan(theta)
-            xpt=r*sin(ang2-alpha)
-            ypt=r*cos(ang2-alpha)
-            xd=rd*sin(ang2)
-            yd=rd*cos(ang2)
-            # i=0 時, 繪線起點由齒根圓上的點, 作為起點
-            if(i==0):
-                last_x = midx+xd
-                last_y = midy-yd
-            # 由右側齒根圓作為起點, 除第一點 (xd,yd) 齒根圓上的起點外, 其餘的 (xpt,ypt)則為漸開線上的分段點
-            create_line((midx+xpt),(midy-ypt),(last_x),(last_y),fill=顏色)
-            # 最後一點, 則為齒頂圓
-            if(i==imax):
-                rfx=midx+xpt
-                rfy=midy-ypt
-            last_x = midx+xpt
-            last_y = midy-ypt
-        # lfx 為齒頂圓上的左側 x 座標, lfy 則為 y 座標
-        # 下列為齒頂圓上用來近似圓弧的直線
-        create_line(lfx,lfy,rfx,rfy,fill=顏色)
-
-gear(400,400,300,41,"blue")
-</script>
-<canvas id="plotarea" width="800" height="800"></canvas>
-</body>
-</html>
+    </form>
+    </html>
     '''
 
         return outstring
-    drawspur .exposed = True
+    drawspur.exposed = True
 
     #@+node:2015.20150330144929.1713: *3* twoDgear
     @cherrypy.expose
@@ -430,8 +330,7 @@ gear(400,400,300,41,"blue")
     <script src="/static/gearUtils-04.js" type="text/javascript"></script>
     </head>
     <!-- 啟動 brython() -->
-    <body onload="brython()">  
-    <font size='3'>      
+    <body onload="brython()">        
     <form method=\"post\" action=\"mygeartest2\">
         <fieldset>
         <legend>考試協同七個齒輪齒輪參數表單值:</legend>
@@ -519,12 +418,11 @@ gear(400,400,300,41,"blue")
         <input type=\"text\" name=\"K\"><br />
         壓力角:<br />
         <input type=\"text\" name=\"inp2\"><br />
-        <input type=\"submit\" value=\"確定\" onClick="LinkUp()">
+        <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">'''+self.menuLink()+'''
     </form>
-   </font>
-</body>
-</html>
+    </body>
+    </html>
     '''
         return outstring
     spur.exposed = True
@@ -1012,7 +910,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         <html>
             <head>
                 <meta charset="UTF-8" />
-                <title>純 CSS 選單 Example</title>
+                <title>40223151_2015cda報告</title>
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
                 <script type="text/javascript">
                     $(function(){
@@ -1127,11 +1025,17 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
                         <ul>
                             <li><a href="spur">七顆齒輪</a></li>
                             <li>
-                                <a href="#">心得</a>
+                                <a href="Reviews">心得</a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="i#">2015cda-w12</a><br /></li>
+                    <li>
+                        <a href="#">2015cda-w12</a>
+                        <ul>
+                            <li><a href="man">樂高人偶</a></li>
+                            <li><a href="#">心得</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">2015cda-w13</a><br /></li>
                     <li><a href="#">2015cda-w14</a><br /></li>
                     <li><a href="index1"> 個人影片</a><br /></li>
@@ -1163,6 +1067,7 @@ application_conf = {'/static':{
     }
 root = Hello()
 root.gear = gear.Gear()
+root.man = man.MAN()
 cherrypy.server.socket_port = 8081
 cherrypy.server.socket_host = '127.0.0.1'
 if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
