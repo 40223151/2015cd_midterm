@@ -19,7 +19,7 @@ import os
 import random
 # 導入 gear 模組
 import gear
-import man
+import man2
 import menuLink1
 
 
@@ -931,7 +931,7 @@ application_conf = {'/static':{
     }
 root = Hello()
 root.gear = gear.Gear()
-root.man = man.MAN()
+root.man2 = man2.MAN()
 root.menuLink1 = menuLink1.MenuLink1()
 cherrypy.server.socket_port = 8081
 cherrypy.server.socket_host = '127.0.0.1'
