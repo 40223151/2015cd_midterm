@@ -1,6 +1,6 @@
 import cherrypy
 # 導入 Python 內建的 os 模組, 因為 os 模組為 Python 內建, 所以無需透過 setup.py 安裝
-import man
+import man2
 class MenuLink1(object):
     # 各組利用 index 引導隨後的程式執行
     @cherrypy.expose
