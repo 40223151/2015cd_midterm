@@ -118,7 +118,7 @@ class MenuLink1(object):
             </head>
             <body>
                 <ul class="navigation">
-                    <li><a href=\"index\">首頁</a><br /></li>
+                    <li><a href=\"index1\">首頁</a><br /></li>
                     <li>
                         <a href="#">2015cda-w11</a>
                         <ul>
@@ -131,7 +131,7 @@ class MenuLink1(object):
                     <li>
                         <a href="#">2015cda-w12</a>
                         <ul>
-                            <li><a href="man">樂高人偶</a></li>
+                            <li><a href="man2">樂高人偶</a></li>
                             <li><a href="#">心得</a></li>
                         </ul>
                     </li>

@@ -1,224 +1,11 @@
-#@+leo-ver=5-thin
-#@+node:2014fall.20141212095015.1775: * @file wsgi.py
-# coding=utf-8
-# 上面的程式內容編碼必須在程式的第一或者第二行才會有作用
-
-################# (1) 模組導入區
-# 導入 cherrypy 模組, 為了在 OpenShift 平台上使用 cherrypy 模組, 必須透過 setup.py 安裝
-
-
-#@@language python
-#@@tabwidth -4
-
-#@+<<declarations>>
-#@+node:2014fall.20141212095015.1776: ** <<declarations>> (wsgi)
 import cherrypy
-# 導入 Python 內建的 os 模組, 因為 os 模組為 Python 內建, 所以無需透過 setup.py 安裝
-import os
-# 導入 random 模組
-import random
-# 導入 gear 模組
-import gear
-import man2
-import menuLink1
-import  index_all
 
-################# (2) 廣域變數設定區
-# 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
-_curdir = os.path.join(os.getcwd(), os.path.dirname(__file__))
-#1 設定在雲端與近端的資料儲存目錄
-if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
-    # 表示程式在雲端執行
-    download_root_dir = os.environ['OPENSHIFT_DATA_DIR']
-    data_dir = os.environ['OPENSHIFT_DATA_DIR']
-else:
-    # 表示程式在近端執行
-    download_root_dir = _curdir + "/local_data/"
-    data_dir = _curdir + "/local_data/"
-
-'''以下為近端 input() 與 for 迴圈應用的程式碼, 若要將程式送到 OpenShift 執行, 除了採用 CherryPy 網際框架外, 還要轉為 html 列印
-# 利用 input() 取得的資料型別為字串
-toprint = input("要印甚麼內容?")
-# 若要將 input() 取得的字串轉為整數使用, 必須利用 int() 轉換
-repeat_no = int(input("重複列印幾次?"))
-for i in range(repeat_no):
-    print(toprint)
-'''
-#@-<<declarations>>
-#@+others
-#@+node:2014fall.20141212095015.1777: ** class Hello
-################# (3) 程式類別定義區
-# 以下改用 CherryPy 網際框架程式架構
-# 以下為 Hello 類別的設計內容, 其中的 object 使用, 表示 Hello 類別繼承 object 的所有特性, 包括方法與屬性設計
-class Hello(object):
-
-    # Hello 類別的啟動設定
-    _cp_config = {
-    'tools.encode.encoding': 'utf-8',
-    'tools.sessions.on' : True,
-    'tools.sessions.storage_type' : 'file',
-    #'tools.sessions.locking' : 'explicit',
-    # session 以檔案儲存, 而且位於 data_dir 下的 tmp 目錄
-    'tools.sessions.storage_path' : data_dir+'/tmp',
-    # session 有效時間設為 60 分鐘
-    'tools.sessions.timeout' : 60
-    }
-
-    #@+others
-    #@+node:2014fall.20141212095015.1778: *3* index_orig
-    # 以 @ 開頭的 cherrypy.expose 為 decorator, 用來表示隨後的成員方法, 可以直接讓使用者以 URL 連結執行
+class Index_all(object):
+    # 各組利用 index 引導隨後的程式執行
     @cherrypy.expose
-    # index 方法為 CherryPy 各類別成員方法中的內建(default)方法, 當使用者執行時未指定方法, 系統將會優先執行 index 方法
-    # 有 self 的方法為類別中的成員方法, Python 程式透過此一 self 在各成員方法間傳遞物件內容
-    def index_orig(self, toprint="Hello World!"):
-        return toprint
-    #@+node:2014fall.20141212095015.2004: *3* __init__
-    def __init__(self):
-        # 配合透過案例啟始建立所需的目錄
-        if not os.path.isdir(data_dir+'/tmp'):
-            os.mkdir(data_dir+'/tmp')
-        if not os.path.isdir(data_dir+"/downloads"):
-            os.mkdir(data_dir+"/downloads")
-        if not os.path.isdir(data_dir+"/images"):
-            os.mkdir(data_dir+"/images")
-    #@+node:2014fall.20141212095015.1779: *3* hello
-    @cherrypy.expose
-    def hello(self, toprint="Hello World!"):
-        return toprint
-    #@+node:2014fall.20141215194146.1791: *3* index
-    @cherrypy.expose
-    def index(self):
-        outstring=''' 
-    <html>
-    <font size='6' color='darkslateblue' face='標楷體' >
-    協同產品設計分組報告
-    </font><br />
-     <font size='4' color='darkslateblue' face='標楷體' >
-    第八組 40223151網站
-    <br />
-    </html>'''
-        outstring +='''
-    <html>
-    <br />
-    <br />
-    <table border=3>
-　 <tr>
-　　 <th><font size="4">小組名單</font></th>
-　　 <th><font size="4"></font></th>
-    </tr>
-　 <tr>
-　　 <th><font size="4"><a href="http://2015cdag8-40223124.rhcloud.com/" target="_blank">小組openshift</a></font></th>
-　　 <th><font size="4"><a href="https://github.com/mm112287/2015cda_g8" target="_blank">小組github</a></font></th>
-    </tr>
-　 <tr rowspan="2">
-　　 <th><font size='4' color='yellow' ><a href="http://cd0427-40223151.rhcloud.com/" target="_blank">40223151簡正斌</a> </font></th>
-　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/" target="_blank">40223110王常浩</a></font></th>
-　 </tr>
-　 <tr>
-　　 <th><font size="4"><a href="http://cd0427-40223124.rhcloud.com/" target="_blank">40223124袁丞宗 </a></font></th>
-　　 <th><font size="4"><a href="http://cd0427-40223129.rhcloud.com/" target="_blank">40223129許家瑋 </a></font></th>
-    </tr>
-　 <tr>
-　　 <th><font size='4' color='yellow' ><a href="http://2015springcda-40223149.rhcloud.com/" target="_blank">40223149賴涵餘</a></font></th>
-　　 <th><font size="4">40223150謝俊宇 </font></th>
-    </tr>
-　 <tr>
-　　 <th><font size="4">40223145劉兆銓</font></th>
-　　 <th></th>
-    </tr>
 
-
-
-    </table>
-    </font>
-    </html>'''
-        outstring  += self.index2()
-        return outstring
-    index.exposed = True
-
-    def mas(self):
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >樂高人偶</font>'''
-        outstring += "</br>"
-        outstring += self.menuLink2()
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring +="""
-                            <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
-                            </body>
-                            """
-        outstring += self.menuLink()
-        return outstring
-    mas.exposed = True
-
-    def Reviews(self):
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >心得</font>'''
-        outstring += "</br>"
-        outstring += self.menuLink2()
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring +="""
-                        <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
-                        <font size='3'>
-                        <DT>心得:
-                                <DD>我覺得這週一方面在了解期中考所做得程式跟七齒嚙合另一方面是讓我們可以跟小組同</br>
-                                <DD>步分工，用最短的時間內更有效率的做事，在這個環境中了解到分工是多麼的重要也對程</br>
-                                <DD>式更加了解。
-
-
-
-                        </fon>
-                        </body>
-                            """
-        outstring += self.menuLink()
-        return outstring
-    Reviews.exposed = True
-    
-    def index1(self):
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >個人影片</font>'''
-        outstring += "</br>"
-        outstring += self.menuLink2()
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring +='''<font size='3'>學號:40223151</font>'''
-        outstring += "<br />"
-        outstring +='''<font size='3'>姓名:簡正斌</font>'''
-        outstring += "<br />"
-        outstring += '''<font size='3'>班級:四設二甲</font>'''
-        outstring += "<br />"
-        outstring += """
-                    <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
-                    <font size='3'>
-                    <iframe src="https://player.vimeo.com/video/128123220" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </br>
-                    影片網址:
-                    <font size='4'><a href="https://vimeo.com/128123220">2015cda w11</a></font></br>
-                    個人vimeo網站:
-                    <font size='4'><a href="https://vimeo.com/user27353237">40223151@gm.nfu.edu.tw</font></a>
-                    </br></br></body></font>"""
-        outstring += self.menuLink()
-        return outstring
-    index1.exposed = True
-    def drawspur1(self, K=None, N=None, inp2=None):
-
-        # 將標準答案存入 answer session 對應區
-        theanswer = random.randint(1, 100)
-        thecount = 0
-        # 將答案與計算次數變數存進 session 對應變數
-        cherrypy.session['answer'] = theanswer
-        cherrypy.session['count'] = thecount
-        # 印出讓使用者輸入的超文件表單
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >2015cda 期中上機考</font>'''
-        outstring += self.menuLink2()
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += '''
+    def drawspur1_1(self, K=None, N=None, inp2=None):
+        outstring = '''
     <!DOCTYPE html> 
     <html>
     <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
@@ -240,12 +27,6 @@ class Hello(object):
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">
-        <a href="index">首頁</a>
-        <a href="gear">3D齒輪模式</a>
-        <a href="spur">七顆齒輪</a>
-        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
-        <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
-        <a href="index1"> 個人影片</a>
     </font>
     </form>
     </body>
@@ -253,25 +34,11 @@ class Hello(object):
     '''
 
         return outstring
-    drawspur1.exposed = True
+    drawspur1_1.exposed = True
 
  
-    def drawspur(self, K=None, N=None, inp2=None):
-
-          # 將標準答案存入 answer session 對應區
-        theanswer = random.randint(1, 100)
-        thecount = 0
-        # 將答案與計算次數變數存進 session 對應變數
-        cherrypy.session['answer'] = theanswer
-        cherrypy.session['count'] = thecount
-        # 印出讓使用者輸入的超文件表單
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >2015cda 期中上機考</font>'''
-        outstring += self.menuLink2()
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += '''
+    def drawspur_1(self, K=None, N=None, inp2=None):
+        outstring = '''
     <!DOCTYPE html> 
     <html>
     <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
@@ -293,41 +60,21 @@ class Hello(object):
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">
-        <a href="index">首頁</a>
-        <a href="gear">3D齒輪模式</a>
-        <a href="spur">七顆齒輪</a>
-        <a href="drawspur"> 2015cda 期中上機考一顆齒輪繪圖</a>
-        <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>
-        <a href="index1"> 個人影片</a>
-    </font>
     </form>
     </body>
     </html>
     '''
 
         return outstring
-    drawspur.exposed = True
+    drawspur_1.exposed = True
 
     #@+node:2015.20150330144929.1713: *3* twoDgear
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
 
 
-    def spur(self, K=None, N=None, inp2=None):
-        # 將標準答案存入 answer session 對應區
-        theanswer = random.randint(1, 100)
-        thecount = 0
-        # 將答案與計算次數變數存進 session 對應變數
-        cherrypy.session['answer'] = theanswer
-        cherrypy.session['count'] = thecount
-        # 印出讓使用者輸入的超文件表單
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >考試協同七個齒輪齒輪參數表單值</font>'''
-        outstring = self.menuLink2()
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += '''
+    def spur_1(self, K=None, N=None, inp2=None):
+        outstring = '''
     <!DOCTYPE html> 
     <html>
     <head>
@@ -427,19 +174,12 @@ class Hello(object):
         壓力角:<br />
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
-        <input type=\"reset\" value=\"重填\">'''+self.menuLink()+'''
-    </form>
+        <input type=\"reset\" value=\"重填\">
     </body>
     </html>
     '''
         return outstring
-    spur.exposed = True
-
-    #@+node:2015.20150330144929.1713: *3* twoDgear
-    @cherrypy.expose
-    # N 為齒數, M 為模數, P 為壓力角
-
-
+    spur_1.exposed = True
     def twoDgear(self, N=20, M=5, P=15):
         outstring = '''
     <!DOCTYPE html> 
@@ -545,7 +285,6 @@ class Hello(object):
         outString += "<br />"
         outString +="壓力角:"+inp2
         outString += "<br />"
-        outString += self.menuLink()
 
         return outString
     spuraction.exposed = True
@@ -733,7 +472,6 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         outString += "<br />"
         outString +="壓力角:"+inp2
         outString += "<br />"
-        outString += self.menuLink()
         outString += '''
     <!DOCTYPE html> 
     <html>
@@ -898,147 +636,5 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         return outString
     mygeartest2.exposed = True
 
-    #@-others
-    def default(self):
-        sys.exit()
-    default.exposed = True
-    def menuLink(self):
-        return '''
-        <br />
-        <a href=\"index\">協同組員</a>|
-        <a href=\"index\">首頁</a>|
-        <a href="gear">3D齒輪模式</a>|
-        <a href=\"spur\">七顆齒輪</a>|
-        <a href="drawspur">2015cda 期中上機考 一顆齒輪繪圖</a>|
-        <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>|
-        <a href="index1"> 個人影片</a>|<br />
-    
-        '''
-    @cherrypy.expose
-    #副程式
-    def  menuLink2(self):
-        return self.menuLink1.index()
-    def index1(self):
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >首頁</font>'''
-        outstring += self.menuLink2()
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += "</br>"
-        outstring += '''
-                        <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
-                        <font size='6' color='black' face='標楷體' >協同的背景</font></br>
-                        <font size='4' color='black' face='標楷體' >
-                        全球化帶來的密集與瞬息萬變的競爭, 即便是全球各領域目前領先的國際大公司都必須</br>
-                        要靠快速併購, 才能具備克敵致勝的專業能力, 因此對於規模較小, 專業能力較不全面的</br>
-                        公司與團隊, 為求生存, 必得積極尋求各方協同的機會.</br>
-                        </br>
-                        以機械設計流程的角度言, 協同產品設計過程中主要的項目在資訊與知識層次上的協同.</br>
 
-                        協同的目的在追求速度, 效能, 多元, 互動與彈性</br>
-
-                        速度 - 推出新產品的速度, 修正既有錯誤的速度</br>
-
-                        效能 - 強調效率與功能, 持續降低成本</br>
-
-                        多元 - 多方嘗試, 多方檢視, 多方調控, 多方出擊</br>
-
-                        互動 - 有推有拉, 有來有往, 密切藕合</br>
-
-                        彈性 - 及時調整適應, 配合需求能夠加以變化</br></br>
-
-                        協同(Collaboration)與合作(Cooperation)有何差異?</br></br>
-
-                        協同源自各方公認的共同目標, 而合作則通常指源自個別認知下的不同標的.</br></br>
-
-                        協同互動性高於合作</br>
-                        協同的積極與動態性, 高於合作</br>
-                        協同成員間的專業重疊性, 高於合作</br>
-                        協同的價值通常高於合作</br>
-                        就時代發展的潮流而言, 以 Collaboration 模式進行協同合作的公司, 所有成員不僅秉持</br>
-                        相同目標, 積極主動, 彼此可互相替代職務, 在永續經營理念下, 不斷創造價值的公司, 將</br>
-                        具有相對於採 Cooperation 模式公司較高的國際競爭力.</br></br>
-
-                        Collaboration 公司 (若公司文化無法支撐以下條件, 則必須透過系統機制達成):</br></br>
-
-                        所有成員在所規劃安排的時間, 盡心盡力完成自我期許的任務, 沒有摸魚與怠忽職守的問題.</br>
-                        所有成員在解決各種問題的流程中, 能不斷自我學習並惕勵自己, 讓公司價值不斷向上攀升.</br>
-                        所有成員都是老闆, 公司的價值得以即時公平落實到所有成員身上.</br>
-                        所有成員在任何時間地點都能上班, 也都能到世界各地去上班, 沒有打卡約束與適應的問題.</br>
-                        公司成員間, 有許多職務都可隨時替代安排, 因此沒有“非我不可”, 加班與爆肝的問題.</br></br>
-                        協同範例</br></br>
-
-                        <a href=\"http://en.flossmanuals.net/_booki/openstreetmap/openstreetmap.pdf\">http://en.flossmanuals.net/_booki/openstreetmap/openstreetmap.pdf</a></br>
-                       <a href="http://www.openstreetmap.org/"> http://www.openstreetmap.org/</a></br></br>
-                        協同原理</br></br>
-
-                        <a href="http://en.wikipedia.org/wiki/General_theory_of_collaboration"> http://en.wikipedia.org/wiki/General_theory_of_collaboration</a></br>
-                        <a href="http://www.designingcollaboration.com/"> http://www.designingcollaboration.com/</a></br></br>
-                        控制工廠間的協同</br></br>
-                        協同的基本元素:</br>
-
-                        協同的動機 - 為何要協同? 環境使然, 趨勢使然, 或者只是為協同而協同.</br>
-                        協同的分享 - 協同過程中, 如何分享?(功勞記在誰頭上?) 分享甚麼?(要全盤托出嗎?) 何時分享? 跟誰分享?</br>
-                        協同的溝通 - 該與誰溝通? 如何溝通? 溝通甚麼? 何時進行溝通?(隨選或即時或定時溝通)</br>
-                        協同的廣度 - 協同的範圍取捨, 哪些領域與專長的人該進來協同?</br>
-                        協同的效度 - 協同解決了甚麼問題? 解決誰的問題? 解決何時的問題? 問題真的解決了嗎?</br>
-                        協同的支援 - 因協同而得的特殊支援項目, 當天就要塌下來了, 誰該負責?</br>
-                    </font>
-                     </body>
-    '''
-        outstring += self.menuLink()
-        return outstring 
-    index1.exposed = True
-    def  index2(self):
-        return '''
-        <br />
-        <table border=3>
-　     <tr>
-        <th align='left'><font " size='4' color='black' face='標楷體' > 40223151功課表單  </font></br></th>
-        </tr>
-　     <tr>
-        <th align='left'><a href="gear" target="_blank">3D齒輪模式</a></br></th>
-　     </tr>
-　     <tr>
-        <th align='left'><a href=\"index_all/spur_1\" target="_blank">七顆齒輪</a></br></th>
-　     </tr>
-　     <tr>
-        <th align='left'><a href="index_all/drawspur_1" target="_blank">2015cda 期中上機考 一顆齒輪繪圖</a></br></th>
-　     </tr>
-　     <tr>
-        <th align='left'><a href="index_all/drawspur1_1" target="_blank"> 2015cda 期中上機考表單文字輸出</a></br></th>
-　     </tr>
-　     <tr>
-        <th align='left'><a href="index1"> 個人首頁</a><font color='red' face='標楷體' >(內有心得跟影片)</font></th>
-　     </tr>
-
-        '''
-    index.exposed = True
-#@-others
-################# (4) 程式啟動區
-# 配合程式檔案所在目錄設定靜態目錄或靜態檔案
-application_conf = {'/static':{
-        'tools.staticdir.on': True,
-        # 程式執行目錄下, 必須自行建立 static 目錄
-        'tools.staticdir.dir': _curdir+"/static"},
-        '/downloads':{
-        'tools.staticdir.on': True,
-        'tools.staticdir.dir': data_dir+"/downloads"},
-        '/images':{
-        'tools.staticdir.on': True,
-        'tools.staticdir.dir': data_dir+"/images"}
-    }
-root = Hello()
-root.gear = gear.Gear()
-root.man2 = man2.MAN()
-root.menuLink1 = menuLink1.MenuLink1()
-root. index_all =  index_all. Index_all()
-cherrypy.server.socket_port = 8081
-cherrypy.server.socket_host = '127.0.0.1'
-if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
-    # 表示在 OpenSfhit 執行
-    application = cherrypy.Application(root, config=application_conf)
-else:
-    # 表示在近端執行
-    cherrypy.quickstart(root, config=application_conf)
-#@-leo
+    #@+node:2015.20150330144929.1713: *3* twoDgear
