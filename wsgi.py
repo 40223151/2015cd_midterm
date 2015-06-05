@@ -177,7 +177,7 @@ class Hello(object):
         return outstring
     Reviews.exposed = True
     
-    def index1(self):
+    def index3(self):
         outstring ='''<font size='6' color='darkslateblue' face='標楷體' >個人影片</font>'''
         outstring += "</br>"
         outstring += self.menuLink2()
@@ -202,7 +202,7 @@ class Hello(object):
                     </br></br></body></font>"""
         outstring += self.menuLink()
         return outstring
-    index1.exposed = True
+    index3.exposed = True
     def drawspur1(self, K=None, N=None, inp2=None):
 
         # 將標準答案存入 answer session 對應區
@@ -906,12 +906,12 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         return '''
         <br />
         <a href=\"index\">協同組員</a>|
-        <a href=\"index\">首頁</a>|
+        <a href=\"index1\">首頁</a>|
         <a href="gear">3D齒輪模式</a>|
         <a href=\"spur\">七顆齒輪</a>|
         <a href="drawspur">2015cda 期中上機考 一顆齒輪繪圖</a>|
         <a href="drawspur1"> 2015cda 期中上機考表單文字輸出</a>|
-        <a href="index1"> 個人影片</a>|<br />
+        <a href="index3"> 個人影片</a>|<br />
     
         '''
     @cherrypy.expose
@@ -1013,7 +1013,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
 　     </tr>
 
         '''
-    index.exposed = True
+    index2.exposed = True
 #@-others
 ################# (4) 程式啟動區
 # 配合程式檔案所在目錄設定靜態目錄或靜態檔案
