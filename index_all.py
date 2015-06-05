@@ -291,7 +291,7 @@ class Index_all(object):
     def drawspuraction (self, K=None, N=None, inp2=None):
         inp3=int(N)*int(K)/2
         #inp 變數即為表單值, 其格式為字串
-        outString   = self.menuLink()
+        outString   = ''
         outString += '''
 
     <!DOCTYPE html> 
