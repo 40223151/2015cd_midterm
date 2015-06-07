@@ -1009,11 +1009,12 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         <th align='left'><a href="index_all/drawspur1_1" target="_blank"> 2015cda 期中上機考表單文字輸出</a></br></th>
 　     </tr>
 　     <tr>
-        <th align='left'><a href="index1"> 個人首頁</a><font color='red' face='標楷體' >(內有心得跟影片)</font></th>
+        <th align='left'><a href="man" target="_blank"> 樂高機器人組立</a></th>
 　     </tr>
 　     <tr>
-        <th align='left'><a href="man"> 樂高機器人組立</a></th>
+        <th align='left'><a href="index1"> 個人首頁</a><font color='red' face='標楷體' >(內有心得跟影片)</font></th>
 　     </tr>
+
 
         '''
     index2.exposed = True
