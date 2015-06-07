@@ -19,13 +19,19 @@ class MAN(object):
         return'''
                     <html>
                     <body>
-                    <font size='4' color='#FF8800' face='標楷體' >小組協同樂高</font></br>
+                    <font size='5' color='#FF8800' face='標楷體' >小組協同樂高</font></br>
                     <form action="man2/assembly">
                     <select name="M">
                     <option value="var featID = three_plane_assembly(session, assembly, transf, 0, 0, "LEGO_BODY.prt", "ASM_TOP", "ASM_FRONT", "ASM_RIGHT", "TOP", "FRONT", "RIGHT");">身體</option>
                     <option value="axis_plane_assembly(session, assembly, transf, featID, 0, "LEGO_ARM_RT.prt", "A_13", "DTM1", "A_4", "DTM1");">右手 ARM</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 0,  "LEGO_ARM_LT.prt", "A_9", "DTM2", "A_4", "DTM1");">左手 ARM</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 1, "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");">右手 HAND</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 2, "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");">左手 HAND</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 0, "LEGO_HEAD.prt", "A_2", "DTM3", "A_2", "DTM2");">偶頭部 HEAD</option>
+                    <option value="three_plane_assembly2(session, assembly, transf, featID, 0, "LEGO_WAIST.prt", "DTM4", "DTM5", "DTM6", "DTM1", "DTM2", "DTM3"); ">WAIST</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 6, "LEGO_LEG_RT.prt", "A_8", "DTM4", "A_10", "DTM1");">右腳</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 6, "LEGO_LEG_LT.prt", "A_8", "DTM5", "A_10", "DTM1");">左腳</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 5, "LEGO_HAT.prt", "A_2", "TOP", "A_2", "FRONT");zz ">紅帽</option>
                     </select>
                     <br><br>
                     <input type="submit">

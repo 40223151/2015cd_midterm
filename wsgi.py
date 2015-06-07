@@ -1011,6 +1011,9 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
 　     <tr>
         <th align='left'><a href="index1"> 個人首頁</a><font color='red' face='標楷體' >(內有心得跟影片)</font></th>
 　     </tr>
+　     <tr>
+        <th align='left'><a href="man"> 樂高機器人組立</a></th>
+　     </tr>
 
         '''
     index2.exposed = True
@@ -1018,6 +1021,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         outstring = '''
 這是 2014CDA 協同專案下的 cdag30 模組下的 MAN 類別.<br /><br />
 <!-- 這裡採用相對連結, 而非網址的絕對連結 (這一段為 html 註解) -->
+<font size='5' color='#FF8800' face='標楷體' >樂高機器人程式一次組起來</font><br />
 <a href="man3/assembly">執行  MAN 類別中的 assembly 方法</a><br /><br />
 請確定下列零件於 V:/home/lego/man 目錄中, 且開啟空白 Creo 組立檔案.<br />
 <a href="/static/lego_man.7z">lego_man.7z</a>(滑鼠右鍵存成 .7z 檔案)<br />
