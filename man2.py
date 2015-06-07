@@ -15,18 +15,26 @@ root.cdag30.man = cdag30_man.MAN()
 class MAN(object):
     # 各組利用 index 引導隨後的程式執行
     @cherrypy.expose
-    def index(self, *args, **kwargs):
-        outstring = '''
-這是 2014CDA 協同專案下的 cdag30 模組下的 MAN 類別.<br /><br />
-<!-- 這裡採用相對連結, 而非網址的絕對連結 (這一段為 html 註解) -->
-<a href="assembly">執行  MAN 類別中的 assembly 方法</a><br /><br />
-請確定下列零件於 V:/home/lego/man 目錄中, 且開啟空白 Creo 組立檔案.<br />
-<a href="/static/lego_man.7z">lego_man.7z</a>(滑鼠右鍵存成 .7z 檔案)<br />
-'''
-        return outstring
-
+    def man4(self):
+        return'''
+                    <html>
+                    <body>
+                    <font size='4' color='#FF8800' face='標楷體' >小組協同樂高</font></br>
+                    <form action="man2/assembly">
+                    <select name="M">
+                    <option value="var featID = three_plane_assembly(session, assembly, transf, 0, 0, "LEGO_BODY.prt", "ASM_TOP", "ASM_FRONT", "ASM_RIGHT", "TOP", "FRONT", "RIGHT");">身體</option>
+                    <option value="axis_plane_assembly(session, assembly, transf, featID, 0, "LEGO_ARM_RT.prt", "A_13", "DTM1", "A_4", "DTM1");">右手 ARM</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                    </select>
+                    <br><br>
+                    <input type="submit">
+                    </form>
+                    </body>
+                    </html>
+                                '''
     @cherrypy.expose
-    def assembly(self, *args, **kwargs):
+    def assembly(self,M=None, *args, **kwargs):
         outstring = '''
 <!DOCTYPE html> 
 <html>
@@ -237,51 +245,10 @@ if (model == void null || model.Type != pfcCreate("pfcModelType").MDL_ASSEMBLY)
 throw new Error (0, "Current model is not an assembly.");
 // 將此模型設為組立物件
 var assembly = model;
-
 /////////////////////////////////////////////////////////////////
 // 開始執行組立, 全部採函式呼叫組立
 /////////////////////////////////////////////////////////////////
-
-// Body 與空組立檔案採三個平面約束組立
-// 空組立面為 ASM_TOP, ASM_FRONT, ASM_RIGHT
-// Body 組立面為 TOP, FRONT, RIGHT
-// 若 featID=0 表示為空組立檔案, 而且函式會傳回第一個組立件的 featID
-var featID = three_plane_assembly(session, assembly, transf, 0, 0, "LEGO_BODY.prt", "ASM_TOP", "ASM_FRONT", "ASM_RIGHT", "TOP", "FRONT", "RIGHT"); 
-// 利用函式呼叫組立右手 ARM, 組立增量次序為 1
-axis_plane_assembly(session, assembly, transf, featID, 0, 
-                              "LEGO_ARM_RT.prt", "A_13", "DTM1", "A_4", "DTM1"
-);
-// 利用函式呼叫組立左手 ARM, 組立增量次序為 2
-axis_plane_assembly(session, assembly, transf, featID, 0, 
-                              "LEGO_ARM_LT.prt", "A_9", "DTM2", "A_4", "DTM1");
-
-// 利用函式呼叫組立右手 HAND, 組立增量次序為 3
-axis_plane_assembly(session, assembly, transf, featID, 1, 
-                              "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");
-
-// 利用函式呼叫組立左手 HAND, 組立增量次序為 4
-axis_plane_assembly(session, assembly, transf, featID, 2, 
-                              "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");
-
-// 利用函式呼叫組立人偶頭部 HEAD, 組立增量次序為 5
-// BODY id 為 featID+0, 以 A_2 及  DTM3 約束
-// HEAD 則直接呼叫檔案名稱, 以 A_2, DTM2 約束
-axis_plane_assembly(session, assembly, transf, featID, 0, 
-                              "LEGO_HEAD.prt", "A_2", "DTM3", "A_2", "DTM2");
-
-// Body 與 WAIST 採三個平面約束組立
-// Body 組立面為 DTM4, DTM5, DTM6
-// WAIST 組立面為 DTM1, DTM2, DTM3, 組立增量次序為 6, 與 body 採三面 mate 組立
-three_plane_assembly2(session, assembly, transf, featID, 0, "LEGO_WAIST.prt", "DTM4", "DTM5", "DTM6", "DTM1", "DTM2", "DTM3"); 
-// 右腳
-axis_plane_assembly(session, assembly, transf, featID, 6, 
-                              "LEGO_LEG_RT.prt", "A_8", "DTM4", "A_10", "DTM1");
-// 左腳
-axis_plane_assembly(session, assembly, transf, featID, 6, 
-                              "LEGO_LEG_LT.prt", "A_8", "DTM5", "A_10", "DTM1");
-// 紅帽
-axis_plane_assembly(session, assembly, transf, featID, 5, 
-                              "LEGO_HAT.prt", "A_2", "TOP", "A_2", "FRONT");zz 
+''+str(M)+''
 // regenerate 並且 repaint 組立檔案
 assembly.Regenerate (void null);
 session.GetModelWindow (assembly).Repaint();    

@@ -19,10 +19,10 @@ import os
 import random
 # 導入 gear 模組
 import gear
-import man2
+import man3
 import menuLink1
 import  index_all
-
+import man2
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
 _curdir = os.path.join(os.getcwd(), os.path.dirname(__file__))
@@ -1014,6 +1014,18 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
 
         '''
     index2.exposed = True
+    def man(self, *args, **kwargs):
+        outstring = '''
+這是 2014CDA 協同專案下的 cdag30 模組下的 MAN 類別.<br /><br />
+<!-- 這裡採用相對連結, 而非網址的絕對連結 (這一段為 html 註解) -->
+<a href="man3/assembly">執行  MAN 類別中的 assembly 方法</a><br /><br />
+請確定下列零件於 V:/home/lego/man 目錄中, 且開啟空白 Creo 組立檔案.<br />
+<a href="/static/lego_man.7z">lego_man.7z</a>(滑鼠右鍵存成 .7z 檔案)<br />
+'''
+        outstring +=self.man2.man4()
+        return outstring
+    man.exposed = True
+
 #@-others
 ################# (4) 程式啟動區
 # 配合程式檔案所在目錄設定靜態目錄或靜態檔案
@@ -1031,6 +1043,7 @@ application_conf = {'/static':{
 root = Hello()
 root.gear = gear.Gear()
 root.man2 = man2.MAN()
+root.man3 = man3.MAN()
 root.menuLink1 = menuLink1.MenuLink1()
 root. index_all =  index_all. Index_all()
 cherrypy.server.socket_port = 8081
