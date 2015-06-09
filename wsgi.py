@@ -193,13 +193,23 @@ class Hello(object):
         outstring += "<br />"
         outstring += """
                     <body bgcolor='azure' link='darkorenge' vlink='darkorenge '>
-                    <font size='3'>
-                    <iframe src="https://player.vimeo.com/video/128123220" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> </br>
+                    <font size='5' color='darkslateblue' face='標楷體'>七齒教學影片</font></br>
+                    <iframe src="https://player.vimeo.com/video/128123220" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></br>
                     影片網址:
                     <font size='4'><a href="https://vimeo.com/128123220">2015cda w11</a></font></br>
+                    <font size='5' color='darkslateblue' face='標楷體'>手動組立教學影片</font></br>
+                    <iframe src="https://player.vimeo.com/video/130121112" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></br>
+                    影片網址:
+                    <a href="https://vimeo.com/130121112">cda8-w13</a></br>  
                     個人vimeo網站:
                     <font size='4'><a href="https://vimeo.com/user27353237">40223151@gm.nfu.edu.tw</font></a>
-                    </br></br></body></font>"""
+                    </br></br></body>
+
+
+
+"""
+
+
         outstring += self.menuLink()
         return outstring
     index3.exposed = True
