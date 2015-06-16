@@ -40,6 +40,42 @@ class MAN(object):
                     </html>
                                 '''
     @cherrypy.expose
+    def man5(self):
+        outstring ="""
+                    <html>
+                    <body>
+                    <font size='5' color='#FF8800' face='標楷體' >小考樂高程式格式</font></br>
+                    1. lego_body.prt</br>
+                    2. lego_waist.prt</br>
+                    3. lego_leg_rt.prt</br>
+                    4. lego_leg_lt.prt</br>
+                    5. lego_arm_rt.prt</br>
+                    6. lego_arm_lt.prt</br>
+                    7. lego_hand.prt</br>
+                    8. lego_hand.prt</br>
+                    9. lego_head.prt</br>
+                    10. lego_hat.prt</br>
+                    <form action="man2/assembly">
+                    <select name="M">
+                    <option value='var featID = three_plane_assembly(session, assembly, transf, 40, 0, "LEGO_BODY.prt", "ASM_TOP", "ASM_FRONT", "ASM_RIGHT", "TOP", "FRONT", "RIGHT");'>身體</option>
+                    <option value='three_plane_assembly2(session, assembly, transf, 40, 0, "LEGO_WAIST.prt", "DTM4", "DTM5", "DTM6", "DTM1", "DTM2", "DTM3"); '>WAIST</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 1, "LEGO_LEG_RT.prt", "A_8", "DTM4", "A_10", "DTM1");'>右腳</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 1, "LEGO_LEG_LT.prt", "A_8", "DTM5", "A_10", "DTM1");'>左腳</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 0, "LEGO_ARM_RT.prt", "A_13", "DTM1", "A_4", "DTM1");'>右手 ARM</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 0,  "LEGO_ARM_LT.prt", "A_9", "DTM2", "A_4", "DTM1");'>左手 ARM</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 4, "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");'>右手 HAND</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 5, "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");'>左手 HAND</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 0, "LEGO_HEAD.prt", "A_2", "DTM3", "A_2", "DTM2");'>頭部 HEAD</option>
+                    <option value='axis_plane_assembly(session, assembly, transf, 40, 8, "LEGO_HAT.prt", "A_2", "TOP", "A_2", "FRONT");'>紅帽</option>
+                    </select>
+                    <br><br>
+                    <input type="submit">
+                    </form>
+                    </body>
+                    </html>
+                        """
+        return outstring
+    @cherrypy.expose
     def assembly(self,M=None, *args, **kwargs):
         outstring = '''
 <!DOCTYPE html> 
