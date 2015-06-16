@@ -1031,7 +1031,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         <th align='left'><a href="index1"> 個人首頁</a><font color='red' face='標楷體' >(內有心得跟影片)</font></th>
 　     </tr>
 　     <tr>
-        <th align='left'><font color='black' face='標楷體' >考試用程式</font></br>
+        <th align='left'><font color='black' face='標楷體' >考試用程式w16</font></br>
         <a href="a_40223151"> a_40223151</a></br>
         <a href="man" target="_blank"> 樂高機器人組立</a></th></br>
 　     </tr>
