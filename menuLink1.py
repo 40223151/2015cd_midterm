@@ -137,7 +137,15 @@ class MenuLink1(object):
                     </li>
                     <li><a href="#">2015cda-w13</a><br /></li>
                     <li><a href="#">2015cda-w14</a><br /></li>
-                    <li><a href="index3"> 個人影片</a><br /></li>
+                    <li>
+                        <a href="index3"> 個人影片</a>
+                        <ul>
+                            <li><a href="video1"> 第一次考試影片</a></li>
+                            <li><a href="#"> 第二次考試影片</a></li>
+                            <li><a href="#"> 期末考考試影片</a></li>
+                        </ul>
+                    </li>
+                    </li>
                     <li>
                         <a href="#">2015cda 期中上機考</a>
                         <ul>
