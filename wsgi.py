@@ -342,7 +342,7 @@ class Hello(object):
     th1 = 0
     th2 = pi/2
     # 將第2齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
-    th3 = -pi/2-pi/n_g3
+    th3 = 0-pi/n_g3
 
     # 將第3齒輪逆時鐘轉 90 度之後, 再往回轉第2齒輪定位帶動轉角, 然後再逆時鐘多轉一齒, 以便與第2齒輪進行囓合
     # 第1個 -pi/2 為將原先垂直的第3齒輪定位線逆時鐘旋轉 90 度
@@ -352,11 +352,11 @@ class Hello(object):
     # 必須乘上兩齒輪齒數的比例, 若齒輪2 大, 則齒輪3 會轉動較快
     # 但是第2齒輪為了與第1齒輪囓合, 已經距離定位線, 多轉了 180 度, 再加上第2齒輪的一齒角度, 因為要帶動第3齒輪定位, 
     # 這個修正角度必須要再配合第2齒與第3齒的轉速比加以轉換成第3齒輪的轉角, 因此乘上 n_g2/n_g3
-    th4 = -pi/2-pi/n_g4+(pi+pi/n_g3)*n_g3/n_g4
+    th4 = 0-pi/n_g4+(pi+pi/n_g3)*n_g3/n_g4
 
-    th5 = -pi/2-pi/n_g5+(pi+pi/n_g4)*n_g4/n_g5-(pi+pi/n_g3)*n_g3/n_g5
-    th6 = -pi/2-pi/n_g6+(pi+pi/n_g5)*n_g5/n_g6-(pi+pi/n_g4)*n_g4/n_g6+(pi+pi/n_g3)*n_g3/n_g6
-    th7 = -pi/2-pi/n_g7+(pi+pi/n_g6)*n_g6/n_g7-(pi+pi/n_g5)*n_g5/n_g7+(pi+pi/n_g4)*n_g4/n_g7-(pi+pi/n_g3)*n_g3/n_g7
+    th5 = 0-pi/n_g5+(pi+pi/n_g4)*n_g4/n_g5-(pi+pi/n_g3)*n_g3/n_g5
+    th6 = 0-pi/n_g6+(pi+pi/n_g5)*n_g5/n_g6-(pi+pi/n_g4)*n_g4/n_g6+(pi+pi/n_g3)*n_g3/n_g6
+    th7 = 0-pi/n_g7+(pi+pi/n_g6)*n_g6/n_g7-(pi+pi/n_g5)*n_g5/n_g7+(pi+pi/n_g4)*n_g4/n_g7-(pi+pi/n_g3)*n_g3/n_g7
 
 
     # 將第1齒輪順時鐘轉 90 度
@@ -387,56 +387,56 @@ class Hello(object):
     # 將第3齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
     ctx.save()
     # translate to the origin of second gear
-    ctx.translate(400+rp_g2+rp_g3,400-rp_g1-rp_g2)
+    ctx.translate(400+rp_g1+rp_g3,400)
     # rotate to engage
     ctx.rotate( th3)
     # put it back
-    ctx.translate(-(400+rp_g2+rp_g3),-(400-rp_g1-rp_g2))
-    spur.Spur(ctx).Gear(400+rp_g2+rp_g3,400-rp_g1-rp_g2,rp_g3,n_g3, pa, "red")
+    ctx.translate(-(400+rp_g1+rp_g3),-400)
+    spur.Spur(ctx).Gear(400+rp_g1+rp_g3,400,rp_g3,n_g3, pa, "red")
     ctx.restore()
 
     # 將第4齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
     ctx.save()
     # translate to the origin of second gear
-    ctx.translate(400+rp_g2+2*rp_g3+rp_g4,400-rp_g1-rp_g2)
+    ctx.translate(400+rp_g1+rp_g3,400+rp_g3+rp_g4)
     # rotate to engage
     ctx.rotate( th4)
     # put it back
-    ctx.translate(-(400+rp_g2+2*rp_g3+rp_g4),-(400-rp_g1-rp_g2))
-    spur.Spur(ctx).Gear(400+rp_g2+2*rp_g3+rp_g4,400-rp_g1-rp_g2,rp_g4,n_g4, pa, "black")
+    ctx.translate(-(400+rp_g1+rp_g3),-(400+rp_g3+rp_g4))
+    spur.Spur(ctx).Gear(400+rp_g1+rp_g3,400+rp_g3+rp_g4,rp_g4,n_g4, pa, "black")
     ctx.restore()
 
     # 將第5齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
     ctx.save()
     # translate to the origin of second gear
-    ctx.translate(400+rp_g2+2*rp_g3+2*rp_g4+rp_g5,400-rp_g1-rp_g2)
+    ctx.translate(400+rp_g1+rp_g3+rp_g4+rp_g5,400+rp_g2+rp_g3)
     # rotate to engage
     ctx.rotate( th5)
     # put it back
-    ctx.translate(-(400+rp_g2+2*rp_g3+2*rp_g4+rp_g5),-(400-rp_g1-rp_g2))
-    spur.Spur(ctx).Gear(400+rp_g2+2*rp_g3+2*rp_g4+rp_g5,400-rp_g1-rp_g2,rp_g5,n_g5 ,pa, "green")
+    ctx.translate(-(400+rp_g1+rp_g3+rp_g4+rp_g5),-(400+rp_g2+rp_g3))
+    spur.Spur(ctx).Gear(400+rp_g1+rp_g3+rp_g4+rp_g5,400+rp_g2+rp_g3,rp_g5,n_g5 ,pa, "green")
     ctx.restore()
 
     # 將第6齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
     ctx.save()
     # translate to the origin of second gear
-    ctx.translate(400+rp_g2+2*rp_g3+2*rp_g4+2*rp_g5+rp_g6,400-rp_g1-rp_g2)
+    ctx.translate(400+rp_g1+rp_g3+rp_g4+rp_g5,400+rp_g3+rp_g3+rp_g4+rp_g6)
     # rotate to engage
     ctx.rotate( th6)
     # put it back
-    ctx.translate(-(400+rp_g2+2*rp_g3+2*rp_g4+2*rp_g5+rp_g6),-(400-rp_g1-rp_g2))
-    spur.Spur(ctx).Gear(400+rp_g2+2*rp_g3+2*rp_g4+2*rp_g5+rp_g6,400-rp_g1-rp_g2,rp_g6,n_g6 ,pa, "yellow")
+    ctx.translate(-(400+rp_g1+rp_g3+rp_g4+rp_g5),-(400+rp_g3+rp_g3+rp_g4+rp_g6))
+    spur.Spur(ctx).Gear(400+rp_g1+rp_g3+rp_g4+rp_g5,400+rp_g3+rp_g3+rp_g4+rp_g6,rp_g6,n_g6 ,pa, "yellow")
     ctx.restore()
 
     # 將第7齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
     ctx.save()
     # translate to the origin of second gear
-    ctx.translate(400+rp_g2+2*rp_g3+2*rp_g4+2*rp_g5+2*rp_g6+rp_g7,400-rp_g1-rp_g2)
+    ctx.translate(400+rp_g1+2*rp_g4+2*rp_g5+rp_g6,400+rp_g3+2*rp_g4+rp_g6)
     # rotate to engage
     ctx.rotate( th7)
     # put it back
-    ctx.translate(-(400+rp_g2+2*rp_g3+2*rp_g4+2*rp_g5+2*rp_g6+rp_g7),-(400-rp_g1-rp_g2))
-    spur.Spur(ctx).Gear(400+rp_g2+2*rp_g3+2*rp_g4+2*rp_g5+2*rp_g6+rp_g7,400-rp_g1-rp_g2,rp_g7,n_g7 ,pa, "pink")
+    ctx.translate(-(400+rp_g1+2*rp_g4+2*rp_g5+rp_g6),-(400+rp_g3+2*rp_g4+rp_g6))
+    spur.Spur(ctx).Gear(400+rp_g1+2*rp_g4+2*rp_g5+rp_g6,400+rp_g3+2*rp_g4+rp_g6,rp_g7,n_g7 ,pa, "pink")
     ctx.restore()
     # 假如第3齒也要進行囓合, 又該如何進行繪圖?
     #spur.Spur(ctx).Gear(400,400,100,12, pa, "red")
@@ -690,13 +690,13 @@ class Hello(object):
     </head>
     <!-- 啟動 brython() -->
     <body onload="brython()" bgcolor='azure' link='darkorenge' vlink='darkorenge '>        
-    <form method=\"post\" action=\"mytest2\">
+    <form method=\"post\" action=\"doCheck\">
         <fieldset>
         <legend>考試協同七個齒輪齒輪參數表單值:</legend>
         齒數1:<br />
-        <input type=\"text\" name=\"N\"><br />
+        <input type=\"text\" name=\"N\" value="24"><br />
         齒數2:<br />
-        <input list="ng1" name="ng1">
+        <input list="ng1" name="ng1" value="15">
         <datalist id="ng1">
         <option value="10">10</option>
         <option value="15">15</option>
@@ -709,9 +709,9 @@ class Hello(object):
         <option value="50">50</option>
         </datalist><br />
         模數:<br />
-        <input type=\"text\" name=\"K\"><br />
+        <input type=\"text\" name=\"K\" value="15"><br />
         壓力角:<br />
-        <input type=\"text\" name=\"inp2\"><br />
+        <input type=\"text\" name=\"inp2\" value="15"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">'''+self.menuLink()+'''
     </form>
@@ -721,21 +721,61 @@ class Hello(object):
         return outstring
     test2.exposed = True  
 
+    def doCheck(self, K=None, N=None,ng1=None, inp2=None):
+        # 假如使用者直接執行 doCheck, 則設法轉回根方法
+        try:
+            你的數字 = int(N)
+            你的數字1= int(K)
+            你的數字2 = int(ng1)
+            你的數字3 = int(inp2)
+        except:
+            return "請輸入 15 到 80 間的整數!<br />"+"<br /><a href='test2'>再試一次!<br /><a href='/'>回首頁</a>"
+        # html 表單
+        outstring = '''    <form method=\"post\" action=\"doCheck\">
+        <fieldset>
+        <legend>考試協同七個齒輪齒輪參數表單值:</legend>
+        齒數1:<br />
+        <input type=\"text\" name=\"N\" value="24"><br />
+        齒數2:<br />
+        <input list="ng1" name="ng1" value="15">
+        <datalist id="ng1">
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        <option value="45">45</option>
+        <option value="50">50</option>
+        </datalist><br />
+        模數:<br />
+        <input type=\"text\" name=\"K\" value="15"><br />
+        壓力角:<br />
+        <input type=\"text\" name=\"inp2\" value="15"><br />
+        <input type=\"submit\" value=\"確定\">
+        <input type=\"reset\" value=\"重填\">'''
 
+        if int(80) < 你的數字 or int(80)<你的數字2 or int(80)<你的數字1 or int(80)<你的數字3 :
+            outstring = '太大了<br /><br />'
+            outstring += "請輸入 15 到 80 間的整數!<br />"+"<br /><a href='test2'>再試一次!<br /><a href='/'>回首頁</a>"
 
+        elif int(15) > 你的數字 or int(15)>你的數字2 or int(15)>你的數字1 or int(15)>你的數字3:
+            outstring = '太小了<br /><br />'
+            outstring += "請輸入 15 到 80 間的整數!<br />"+"<br /><a href='test2'>再試一次!<br /><a href='/'>回首頁</a>"
 
-    def mytest2(self, K=None, N=None,ng1=None, inp2=None):
-        outString = ""
-        outString +="藍色，齒數1:"+N
-        outString += "<br />"
-        outString +="黑色，齒數2:"+ng1
-        outString +="模數:"+K
-        outString += "<br />"
-        outString +="壓力角:"+inp2
-        outString += "<br />"
-        outString += self.menuLink()
-        outString += '''
-    <!DOCTYPE html> 
+        else:
+            outstring = ""
+            outstring +="黑色，齒數1:"+ng1
+            outstring += "<br />"
+            outstring +="藍色，齒數2:"+N
+            outstring +="模數:"+K
+            outstring += "<br />"
+            outstring +="壓力角:"+inp2
+            outstring += "<br />"
+            outstring += self.menuLink()
+            outstring += '''
+    <!DOTYPE html> 
     <html>
     <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -764,13 +804,13 @@ class Hello(object):
     # Gear(midx, midy, rp, n=20, pa=20, color="black"):
     # 模數決定齒的尺寸大小, 囓合齒輪組必須有相同的模數與壓力角
     # 壓力角 pa 單位為角度
-    pa = '''+str(inp2)+'''
+    pa = '''+str(你的數字3)+'''
     # m 為模數
-    m = '''+str(K)+'''
+    m = '''+str(你的數字1)+'''
     # 第1齒輪齒數
-    n_g1 = '''+str(N)+'''
+    n_g1 = '''+str(你的數字)+'''
     # 第2齒輪齒數
-    n_g2 = '''+str(ng1)+'''
+    n_g2 = '''+str(你的數字2)+'''
     # 計算兩齒輪的節圓半徑
     rp_g1 = m*n_g1/2
     rp_g2 = m*n_g2/2
@@ -779,7 +819,7 @@ class Hello(object):
     th1 = 0
 
     # 將第2齒輪逆時鐘轉 90 度之後, 再多轉一齒, 以便與第1齒輪進行囓合
-    th2 = pi/2
+    th2 = pi+pi/n_g2
     ctx.save()
     # translate to the origin of second gear
     ctx.translate(400,400)
@@ -808,10 +848,11 @@ class Hello(object):
     </body>
     </html>
     '''
+            
+        return outstring
+    doCheck.exposed = True
 
-        return outString
-    mytest2.exposed = True
-
+    @cherrypy.expose
 
     def spur(self, K=None, N=None, inp2=None):
         # 將標準答案存入 answer session 對應區
@@ -1523,6 +1564,7 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
 　     </tr>
 　     <tr>
         <th align='left'><font color='black' face='標楷體' >第二次小考程式w17</font></br>
+        <a href="test2">垂直齒輪</a></br>
         </th>
 　     </tr>
 
