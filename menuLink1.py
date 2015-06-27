@@ -135,11 +135,23 @@ class MenuLink1(object):
                             <li><a href="#">心得</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">2015cda-w13</a><br /></li>
-                    <li><a href="#">2015cda-w14</a><br /></li>
+                    <li><a href="#">2015cda-w16</a>
+                        <ul>
+                            <li><a href="a_40223151">a_40223151</a></li>
+                            <li><a href="man">樂高機器人組立</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a href="#">2015cda-w17</a>
+                    <ul>
+                        <li><a href="test2">垂直齒輪</a></li>
+                        <li><a href="test1">垂直齒輪7齒</a></li>
+                    </ul>
+                    </li>
                     <li>
                         <a href="index3"> 個人影片</a>
                         <ul>
+                            <li><a href="index3">課程練習影片</a></li>
                             <li><a href="video1"> 第一次考試影片</a></li>
                             <li><a href="#"> 第二次考試影片</a></li>
                             <li><a href="#"> 期末考考試影片</a></li>

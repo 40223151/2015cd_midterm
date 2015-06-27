@@ -634,7 +634,7 @@ class Hello(object):
     Reviews.exposed = True
     
     def index3(self):
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >個人影片</font>'''
+        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >課程練習影片</font>'''
         outstring += "</br>"
         outstring += self.menuLink2()
         outstring += "</br>"
