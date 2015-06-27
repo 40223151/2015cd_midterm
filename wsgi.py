@@ -149,8 +149,9 @@ class Hello(object):
         cherrypy.session['answer'] = theanswer
         cherrypy.session['count'] = thecount
         # 印出讓使用者輸入的超文件表單
-        outstring ='''<font size='6' color='darkslateblue' face='標楷體' >垂直齒輪七齒</font>'''
-        outstring = self.menuLink2()
+        outstring ="<font size='6' color='darkslateblue' face='標楷體' >垂直齒輪七齒</font>"
+        outstring += "</br>"
+        outstring += self.menuLink2()
         outstring += "</br>"
         outstring += "</br>"
         outstring += "</br>"
@@ -169,7 +170,7 @@ class Hello(object):
     <body onload="brython()" bgcolor='azure' link='darkorenge' vlink='darkorenge '>        
     <form method=\"post\" action=\"mytest1\">
     <fieldset>
-    <legend>考試協同七個齒輪齒輪參數表單值:</legend>
+    <legend>垂直齒輪7齒:</legend>
     齒數1:<br />
     <input type=\"text\" name=\"N\"value="24"><br />
     齒數2:<br />
@@ -786,7 +787,8 @@ class Hello(object):
         cherrypy.session['count'] = thecount
         # 印出讓使用者輸入的超文件表單
         outstring ='''<font size='6' color='darkslateblue' face='標楷體' >垂直齒輪</font>'''
-        outstring = self.menuLink2()
+        outstring += "</br>"
+        outstring += self.menuLink2()
         outstring += "</br>"
         outstring += "</br>"
         outstring += "</br>"
