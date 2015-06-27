@@ -121,7 +121,7 @@ class Hello(object):
 　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/" target="_blank">40223110王常浩</a></font></th>
 　 </tr>
 　 <tr>
-　　 <th><font size="4"><a href="http://cd0427-40223124.rhcloud.com/" target="_blank">40223124袁丞宗 </a></font></th>
+　　 <th><font size="4"><a href="http://2015cdag8n24-40223124.rhcloud.com/" target="_blank">40223124袁丞宗 </a></font></th>
 　　 <th><font size="4"><a href="http://cd0427-40223129.rhcloud.com/" target="_blank">40223129許家瑋 </a></font></th>
     </tr>
 　 <tr>
@@ -1681,9 +1681,26 @@ gear(400,400,'''+str(K)+''','''+str(N)+''',"blue")
         </th>
 　     </tr>
 　     <tr>
-        <th align='left'><font color='black' face='標楷體' >第二次小考程式w17</font></br>
+        <th align='left' ><font color='black' face='標楷體' >第二次小考程式w17</font></br>
         <a href="test2">垂直齒輪</a></br>
         <a href="test1">垂直齒輪7齒</a></br>
+        <a href="http://2015cdag8n24-40223124.rhcloud.com/geartest3">協同齒輪</a>
+            <table border=3 bordercolor= #FF0088   align =center>
+            <tr>
+            <th align='left'>
+            <font color='blue' face='標楷體' >
+            <li>協同齒輪參加人員:        
+            </font>
+            <font color='blue' face='標楷體' >
+                    <ul>
+                        1.袁承宗，負責1、2齒</br>
+                        2.簡正斌，負責3、4齒</br>
+                        3.謝俊宇，負責5、6齒</br>
+                    </ul>
+            </th>
+            </tr>
+        </li>
+        </font></br>
         </th>
 　     </tr>
 
